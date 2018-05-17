@@ -68,7 +68,7 @@
     </style>
 </head>
 <body>
-    <ul class="bg"></ul>
+    <ul class="bg" style="border: 1px solid rgba(100,100,100,.8)"></ul>
     <ul class="bg2"></ul>
 
 <script>
@@ -110,6 +110,10 @@
         num = cover.length;
         if (num == 0) {
             cancelAnimationFrame(requestAnimation);
+            // var show = document.getElementsByClassName("show");
+            // for (var i = 0; i < show.length; i++) {
+            //     show[i].style.border = "1px solid rgba(100,100,100,.8)";
+            // }
         }
 
     }
