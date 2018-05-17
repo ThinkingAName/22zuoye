@@ -1,0 +1,118 @@
+<!doctype html>               <!--申明html文档-->
+<html>
+<head>
+    <meta charset="utf-8">      <!--字符编码为国际编码-->
+    <meta name="Author" content="40期风屿JS——不懂就问">    <!--网页创建者-->
+    <meta name="Keywords" content="作业，练习题">         <!--供搜索引擎搜索匹配的关键-->
+    <meta name="description" content="课后练习题作业，熟悉课堂学习操作">  <!--在搜索有结果页面显示的网页描述-->
+    <title>第2次课后作业</title>   <!--网页标题-->
+    <!--
+          <link rel="stylesheet" type="text/css" href="css/common.css">
+          <link rel="stylesheet" type="text/css" href="css/index.css">
+          <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+          <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+          -->
+    <style>
+        body, p, ul, dl, dd, ol, h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        ul, ol {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0;
+        }
+
+        em, i {
+            font-style: normal; /*设置字体样式：正常显示（就是不倾斜）*/
+        }
+
+        strong, b {
+            font-weight: normal; /*设置字体加粗：正常显示（就是不加粗）*/
+        }
+
+        a {
+            text-decoration: none; /*去掉下划线*/
+        }
+        .bg{
+            width: 535px;
+            height: 300px;
+            margin: auto;
+            background-image: url("images/1.jpg");
+        }
+        .bg2{
+            width: 500px;
+            height: 700px;
+            margin: 50px auto;
+            background-image: url("images/2.jpg");
+        }
+        li{
+            float: left;
+        }
+        .cover{
+            background-color: rgba(80,80,80,1);
+        }
+        .cover2{
+            background-color: rgba(80,80,80,1);
+        }
+        .show{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul class="bg"></ul>
+    <ul class="bg2"></ul>
+
+<script>
+    var bg = document.getElementsByTagName("ul")[0],
+        bg2 = document.getElementsByTagName("ul")[1],
+        cover = document.getElementsByClassName("cover"),
+        bgH = parseFloat(getComputedStyle(bg).height),
+        bgW = parseInt(getComputedStyle(bg).width),
+        bg2H = parseFloat(getComputedStyle(bg2).height),
+        bg2W = parseInt(getComputedStyle(bg2).width),
+        num = cover.length;
+
+   // console.log(cover);
+
+    for (var i = 0 ; i < 100; i++) {
+        bg.innerHTML += '<li class="cover" style="width: '+ bgW/10 +'px; height: '+ bgH/10 +'px;"></li>';
+        bg2.innerHTML += '<li class="cover" style="width: '+ bg2W/10 +'px; height: '+ bg2H/10 +'px;"></li>';
+    }
+    // 使用 setInterval
+    function moveCover () {
+                console.log(num);
+                cover[Math.floor(Math.random()*num)].className = "show";
+                cover = document.getElementsByClassName("cover");
+                num = cover.length;
+                if (num == 0) {
+                clearInterval(cageImgShowT);
+                }
+    }
+     // 暂时关闭，setInterval 动画执行；
+    // cageImgShowT = setInterval(moveCover,50);
+
+    // 使用 requestAnimationFrame（） 方法；
+    moveCover2();
+    function moveCover2 () {
+        console.log(num);
+        requestAnimation =  requestAnimationFrame(moveCover2);
+        cover[Math.floor(Math.random()*num)].className = "show";
+        cover = document.getElementsByClassName("cover");
+        num = cover.length;
+        if (num == 0) {
+            cancelAnimationFrame(requestAnimation);
+        }
+
+    }
+</script>
+</body>
+</html>
